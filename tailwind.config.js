@@ -7,6 +7,11 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        brand: {
+          modal: "rgba(12, 12, 12, 0.8)",
+        },
+      },
       backgroundImage: {
         landing:
           "linear-gradient(0deg, rgba(56, 17, 139, 0.53), rgba(56, 17, 139, 0.53)), url(/brand/landing-bg.jpg)",

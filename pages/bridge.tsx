@@ -1,5 +1,6 @@
 import BridgeInput from "components/_shared/BridgeInput";
 import RightModal from "components/_shared/Modals/ChainModal";
+import ChainSelectionModal from "components/_shared/Modals/ChainSelectionModal";
 import { chainSelection, getChainImgUrl } from "lib";
 import { useRef, useState } from "react";
 
@@ -14,11 +15,6 @@ const Home = () => {
   const [endChainSelected, setEndChainSelected] = useState("");
   const [isSource, setIsSource] = useState(false);
   const [NFT_ID, setNFT_ID] = useState<string>();
-
-  console.log("sourceContract: ", sourceContract);
-  console.log("endContract: ", endContract);
-  console.log("sourceSelected: ", sourceSelected);
-  console.log("endChainSelected: ", endChainSelected);
 
   return (
     <>
@@ -61,25 +57,15 @@ const Home = () => {
               />
             </div>
           </div>
-          <div className="mt-5 h-1/3">
-            <input
-              onChange={(e) => setNFT_ID(e.target.value)}
-              placeholder="NFT ID TO BRIDGE"
-              className="outline-none w-full h-full text-black text-2xl bg-gray-100 rounded-xl pt-1 px-5 capitalize"
-            />
-          </div>
         </div>
       </div>
       <div className="w-[calc(100%-32px)] rounded-xl h-1/3 shadow-2xl bg-purple-800/50 border-2 border-gray-600/80 backdrop-blur-sm p-4">
         [HOW BRIDGE WORKS]
       </div>
-      <RightModal
+      <ChainSelectionModal
+        show={showModal}
+        title="Select a Chain"
         onClose={() => setShowModal(false)}
-        setShowModal={setShowModal}
-        showPopup={showModal}
-        isSource={isSource}
-        selectChain={isSource ? setSourceSelected : setEndChainSelected}
-        sourceSelected={sourceSelected}
       />
     </>
   );
